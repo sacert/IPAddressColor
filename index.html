@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <script src="jquery-3.1.1.min.js"></script>
+      <title>IP Address Color</title>
+    </head>
+    <style>
+
+      body {
+        margin: 10px;
+        font-family: Verdana, Geneva, sans-serif;
+        background-color: black;
+        text-align: center;
+
+      }
+
+      footer {
+        font-family: Verdana, Geneva, sans-serif;
+        color: rgba(255, 255, 255, 0.7);
+        position: absolute;
+        bottom: 0;
+        height; 40px;
+        margin-top: 40px;
+        font-size:13px;
+      }
+
+      a {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      #ip-address {
+        font-size: 120px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+    </style>
+    <body>
+      <div id="ip-address"></div>
+      <div id="color-hex"></div>
+    </body>
+    <footer>
+      <p>Made by Stephen Kang. Source at <a href="https://github.com/sacert/IP-Address-Color">GitHub</a></p>
+    </footer>
+    <script>
+      $(document).ready(function() {
+        $.getJSON("https://jsonip.com/?callback=?", function (data) {
+          $('#ip-address').text(data['ip']);
+          var ipParts = data['ip'].split(".");
+          $('body').css('background-color', "rgba(" + ipParts[0] + "," + ipParts[1] +  "," + ipParts[2] +  "," + ipParts[3]/255 + ")");
+        })
+      })
+    </script>
+</html>
