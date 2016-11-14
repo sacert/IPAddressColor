@@ -47,7 +47,7 @@
     </footer>
     <script>
     $(document).ready(function() {
-        $.get("http://ipinfo.io", function(response) {
+        $.get("https://ipinfo.io", function(response) {
           $('#ip-address').text(response.ip);
           var ipParts = (response.ip).split(".");
           $('body').css('background-color', "rgba(" + ipParts[0] + "," + ipParts[1] +  "," + ipParts[2] +  "," + ipParts[3]/255 + ")");
